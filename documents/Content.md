@@ -22,11 +22,15 @@ Aim of this tutorial is to cover the following.
        vi. StatefulSet
        vii. DemmonSet
        viii. Jobs and Cronjob
+       ix. Service
+       x. Secret
 
 6. Kubernetes Deployment Strategies
 
     https://www.weave.works/blog/kubernetes-deployment-strategies
     https://blog.container-solutions.com/kubernetes-deployment-strategies
     https://github.com/ContainerSolutions/k8s-deployment-strategies
+    https://medium.com/google-cloud/kubernetes-101-pods-nodes-containers-and-clusters-c1509e409e16
+
 
 7. Pipelines to deploy software onto kubernetes cluster.
