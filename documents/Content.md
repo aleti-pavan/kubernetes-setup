@@ -24,6 +24,7 @@ Aim of this tutorial is to cover the following.
        viii. Jobs and Cronjob
        ix. Service
        x. Secret
+       xi. Ingress
 
 6. Kubernetes Deployment Strategies
 
