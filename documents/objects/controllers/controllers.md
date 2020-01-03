@@ -6,6 +6,8 @@ We are discussing 3 main types of controllers [here](https://www.mirantis.com/bl
 
 2. ReplicationSet
 
+![replicaset](../../../images/Replicaset.jpeg)
+
 3. Deployment
 
 ![deployment-replicaset](../../../images/Deployment-replicaset.jpeg)
