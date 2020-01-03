@@ -2,6 +2,12 @@
 
 We are discussing 3 main types of controllers [here](https://www.mirantis.com/blog/kubernetes-replication-controller-replica-set-and-deployments-understanding-replication-options/).
 
+URLs to refer:
+
+1. https://www.mirantis.com/blog/kubernetes-replication-controller-replica-set-and-deployments-understanding-replication-options/
+2. https://www.edureka.co/community/43891/difference-between-replica-set-and-replication-controller
+
+
 1. ReplicationController
 
 2. ReplicationSet
