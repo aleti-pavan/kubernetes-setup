@@ -8,7 +8,7 @@ We are discussing 3 main types of controllers [here](https://www.mirantis.com/bl
 
 3. Deployment
 
-![deployment-replicaset](../../images/Deployment-replicaset.jpeg)
+![deployment-replicaset](../../../images/Deployment-replicaset.jpeg)
 
 differences b/w `ReplicationController` and `ReplicationSet`
 
