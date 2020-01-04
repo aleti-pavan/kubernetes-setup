@@ -17,4 +17,6 @@
 
     5. `kubectl get nodes`  ( should show you the nodes )
 
-    6. 'kubectl cluster-info'
+    6. `kubectl cluster-info` ( shows you cluster-info )
+
+    7. ``
