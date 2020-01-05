@@ -62,6 +62,38 @@ Node:           minikube/192.168.64.4
 
 
 ```
+
+### Create deployment with yaml file
+
+```
+
+pavan$ cat nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      run: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: aletipavan/nginx-docker-example
+        ports:
+        - containerPort: 80
+
+pavan$ kubectl apply -f nginx-deployment.yaml
+deployment.apps/nginx created
+
+```
+
+
 ### Get a Shell to a running container
 
 ```    
