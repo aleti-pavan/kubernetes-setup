@@ -159,7 +159,7 @@ command terminated with exit code 126
 curl command doesn't exist in the image we have used, hence we are changing the image. This process is as same as we do app version change from one version to other version of the applicaiton.
 
 
-pavan$ kubectl set image deployment nginx nginx=nginx:1.9.1
+pavan$ kubectl set image deployment nginx nginx=nginx:nginx:1.13.12
 deployment.apps/nginx image updated
 pavan$ kubectl rollout status deployment nginx
 Waiting for deployment "nginx" rollout to finish: 1 out of 2 new replicas have been updated...
@@ -169,5 +169,62 @@ Waiting for deployment "nginx" rollout to finish: 1 old replicas are pending ter
 Waiting for deployment "nginx" rollout to finish: 1 old replicas are pending termination...
 deployment "nginx" successfully rolled out
 pavan$
+
+pavan$ kubectl describe node
+Name:               minikube
+Roles:              master
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Sun, 05 Jan 2020 20:20:20 +0000   Sun, 05 Jan 2020 14:14:35 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  Ready            True    Sun, 05 Jan 2020 20:20:20 +0000   Sun, 05 Jan 2020 14:14:35 +0000   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  192.168.64.4
+  Hostname:    minikube
+
+
+kubectl delete deployment nginx
+
+
+kubectl delete svc nginx
+
+
+kubectl apply -f manifest-files/nginx-deployment.yaml
+
+
+Using the kubernetes cluster IP i.e minikube's IP in our case. we can access the pod.
+
+pavan$ curl 192.168.64.4:30555
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+pavan$
+
+
+
 
 ```
