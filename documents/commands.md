@@ -191,6 +191,11 @@ kubectl delete deployment nginx
 kubectl delete svc nginx
 
 
+```
+
+### Create Deployment, Service and Access the Service
+
+```
 kubectl apply -f manifest-files/nginx-deployment.yaml
 
 
@@ -223,8 +228,6 @@ Commercial support is available at
 </body>
 </html>
 pavan$
-
-
 
 
 ```
