@@ -110,4 +110,64 @@ pavan$
 
 ```
 
-kubectl expose deployment/nginx
+kubectl expose deployment nginx --port=8000 --type=NodePort
+
+```
+
+
+
+## Kubectl Deployment Rollout
+
+
+We tried creating deployment, replicaset, pods and service. When we are trying to access `ClusterIP` type of service from the `Pod` itself the image we have used doesn't have `curl` command. So we are changing the image we have used for the deployment.
+
+__Change__ : `aletipavan/nginx-docker-example` ---->  `nginx:1.9.1`
+
+```
+
+pavan$ kubectl expose deployment nginx --port=8000 --target-port=80
+service/nginx exposed
+pavan$ kubectl get svc
+NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP    5h15m
+nginx        ClusterIP   10.97.62.56   <none>        8000/TCP   5s
+pavan$ kubectl get all
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/nginx-79fdd7bfbd-wk7n9   1/1     Running   0          71m
+pod/nginx-79fdd7bfbd-zcgk2   1/1     Running   0          71m
+
+
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+service/kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP    5h15m
+service/nginx        ClusterIP   10.97.62.56   <none>        8000/TCP   14s
+
+
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx   2/2     2            2           71m
+
+NAME                               DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-79fdd7bfbd   2         2         2       71m
+
+
+
+
+pavan$ kubectl exec -it nginx-79fdd7bfbd-wk7n9 curl 10.97.62.56:8000
+OCI runtime exec failed: exec failed: container_linux.go:345: starting container process caused "exec: \"curl\": executable file not found in $PATH": unknown
+command terminated with exit code 126
+
+
+curl command doesn't exist in the image we have used, hence we are changing the image. This process is as same as we do app version change from one version to other version of the applicaiton.
+
+
+pavan$ kubectl set image deployment nginx nginx=nginx:1.9.1
+deployment.apps/nginx image updated
+pavan$ kubectl rollout status deployment nginx
+Waiting for deployment "nginx" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "nginx" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "nginx" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "nginx" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "nginx" rollout to finish: 1 old replicas are pending termination...
+deployment "nginx" successfully rolled out
+pavan$
+
+```
