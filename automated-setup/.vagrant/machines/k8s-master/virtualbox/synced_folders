@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/pavan/Downloads/playground/kubernetes-setup/automated-setup","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
