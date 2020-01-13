@@ -34,3 +34,5 @@ URLs to refer:
 
 
 This [url](https://github.com/Duffney/Kubernetes-Update-Apps-The-Hard-Way) has code with strategies.
+
+[roll-back](https://learnk8s.io/kubernetes-rollbacks)
